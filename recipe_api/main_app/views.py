@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from recipe_api.main_app.serializers import UserSerializer, GroupSerializer
+from recipe_api.main_app.serializers import UserSerializer, GroupSerializer, RecipeSerializer, RecipeGroupSerializer
+from recipe_api.main_app.models import Recipe, RecipeGroup
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -18,3 +19,21 @@ class GroupViewSet(viewsets.ModelViewSet):
 
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class RecipeViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows recipes to be viewed or edited
+    """
+
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+
+
+class RecipeGroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows recipeGroups to be viewed or edited
+    """
+
+    queryset = RecipeGroup.objects.all()
+    serializer_class = RecipeGroupSerializer
